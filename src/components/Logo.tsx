@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import milesetLogoAsset from '../assets/images/mileset_official_logo_1792040677611.jpg';
+import React from 'react';
 
 interface LogoProps {
   className?: string;
@@ -14,93 +13,97 @@ export const Logo: React.FC<LogoProps> = ({
   inverted = false,
   size = 'md',
 }) => {
-  const [imgError, setImgError] = useState(false);
-
   const iconDimensions = {
-    sm: 'w-7 h-7',
-    md: 'w-9 h-9',
+    sm: 'w-8 h-8',
+    md: 'w-10 h-10',
     lg: 'w-12 h-12',
   }[size];
 
-  const imgHeight = {
-    sm: 'h-8 sm:h-9',
-    md: 'h-10 sm:h-12',
-    lg: 'h-14 sm:h-16',
-  }[size];
-
   const textSize = {
-    sm: 'text-base',
-    md: 'text-lg',
+    sm: 'text-lg',
+    md: 'text-xl',
     lg: 'text-2xl',
   }[size];
 
-  // Renders the official MILESET LIMITED logo graphic with user's HTML specifications
-  if (!symbolOnly && !imgError) {
-    return (
-      <span style={{ display: 'inline-block' }} className={className}>
-        <img
-          src={milesetLogoAsset}
-          alt="Mileset Limited"
-          width="420"
-          style={{ maxWidth: '100%', height: 'auto', display: 'block' }}
-          className={`${imgHeight} w-auto max-w-[210px] sm:max-w-[260px] md:max-w-[300px] object-contain transition-transform duration-200 hover:scale-102 ${
-            inverted ? 'brightness-0 invert opacity-95' : 'mix-blend-multiply'
-          }`}
-          onError={() => setImgError(true)}
-        />
-      </span>
-    );
-  }
+  const subSize = {
+    sm: 'text-[9px]',
+    md: 'text-[10px]',
+    lg: 'text-xs',
+  }[size];
 
-  // Resilient vector brandmark fallback
   return (
-    <div className={`inline-flex items-center gap-2.5 ${className}`}>
-      {/* Distinctive M-inspired Symbol */}
+    <div className={`inline-flex items-center gap-3 ${className}`}>
+      {/* Authentic Multi-Sector Corporate Symbol */}
       <div
-        className={`${iconDimensions} shrink-0 rounded-lg flex items-center justify-center transition-transform hover:scale-105 duration-200 shadow-xs ${
-          inverted
-            ? 'bg-[#FFFDF7] text-[#315D4B]'
-            : 'bg-[#315D4B] text-[#FFFDF7]'
+        className={`${iconDimensions} shrink-0 rounded-xl flex items-center justify-center transition-transform hover:scale-105 duration-200 shadow-xs overflow-hidden ${
+          inverted ? 'bg-white/10 text-white' : 'bg-gradient-to-br from-[#173A5E] to-[#0D52BA] text-white'
         }`}
         aria-hidden="true"
       >
         <svg
-          viewBox="0 0 36 36"
+          viewBox="0 0 44 44"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-5/6 h-5/6"
+          className="w-full h-full p-1"
         >
-          {/* Architectural Modern 'M' Motif */}
+          {/* Globe & Horizon Arc */}
+          <circle cx="22" cy="18" r="11" stroke="#E6F2E9" strokeWidth="1.5" strokeDasharray="2 2" opacity="0.4" />
           <path
-            d="M7 27V9L14.5 20.5L18 15L21.5 20.5L29 9V27H24.5V16.5L19.8 23.8H16.2L11.5 16.5V27H7Z"
-            fill="currentColor"
+            d="M9 25C13 21 28 20 35 25"
+            stroke="#EAA023"
+            strokeWidth="2"
+            strokeLinecap="round"
           />
-          {/* Subtle Golden Horizon Accent Point */}
-          <circle
-            cx="28"
-            cy="27"
-            r="2"
-            fill={inverted ? '#315D4B' : '#F5EBD7'}
+          {/* Flight Path & Airplane */}
+          <path
+            d="M26 14L34 8L33 11L36 12L31 15L30 18L28 16L27 18L26 14Z"
+            fill="#EAA023"
+          />
+          {/* House & Structure Skyline Silhouette */}
+          <path
+            d="M13 36V28L18 24L23 28V36H13Z"
+            fill={inverted ? '#FFFDF7' : '#FFFFFF'}
+          />
+          <path
+            d="M24 36V26L29 22L34 26V36H24Z"
+            fill={inverted ? '#E6F2E9' : '#E6F2E9'}
+            opacity="0.9"
+          />
+          {/* Rising Chart Growth Arrow */}
+          <path
+            d="M16 32L19 29L22 31L25 27"
+            stroke="#0D52BA"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
       </div>
 
       {!symbolOnly && (
         <div className="flex flex-col leading-none">
+          {/* Brand Name with Official Dual-Tone: MILE in Royal Blue, SET in Golden Amber */}
           <span
-            className={`font-extrabold tracking-tight font-sans whitespace-nowrap ${textSize} ${
+            className={`font-black tracking-tight font-sans whitespace-nowrap ${textSize} ${
               inverted ? 'text-white' : 'text-[#173A5E]'
             }`}
           >
-            MILESET <span className={inverted ? 'text-[#E6F2E9]' : 'text-[#315D4B]'}>LIMITED</span>
+            <span className={inverted ? 'text-white' : 'text-[#0D52BA]'}>MILE</span>
+            <span className="text-[#EAA023]">SET</span>
           </span>
-          <span
-            className={`text-[9.5px] uppercase tracking-[0.16em] font-medium mt-1 ${
-              inverted ? 'text-slate-300' : 'text-[#64748B]'
-            }`}
-          >
-            Connecting Opportunities
-          </span>
+
+          {/* — LIMITED — Subtitle with flanking accents matching the official logo */}
+          <div className="flex items-center gap-1 mt-1">
+            <span className="w-3 h-[1.5px] bg-[#EAA023]" />
+            <span
+              className={`font-extrabold uppercase tracking-[0.22em] ${subSize} ${
+                inverted ? 'text-slate-200' : 'text-[#173A5E]'
+              }`}
+            >
+              LIMITED
+            </span>
+            <span className="w-3 h-[1.5px] bg-[#EAA023]" />
+          </div>
         </div>
       )}
     </div>
