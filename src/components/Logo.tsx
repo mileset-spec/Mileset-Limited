@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import milesetLogoAsset from '../assets/images/mileset_official_logo_1792040677611.jpg';
 
 interface LogoProps {
   className?: string;
@@ -22,9 +23,9 @@ export const Logo: React.FC<LogoProps> = ({
   }[size];
 
   const imgHeight = {
-    sm: 'h-8',
-    md: 'h-10 sm:h-11',
-    lg: 'h-14',
+    sm: 'h-8 sm:h-9',
+    md: 'h-10 sm:h-12',
+    lg: 'h-14 sm:h-16',
   }[size];
 
   const textSize = {
@@ -33,17 +34,17 @@ export const Logo: React.FC<LogoProps> = ({
     lg: 'text-2xl',
   }[size];
 
-  // If the user's mileset-logo.png is available and not symbol-only, display it
+  // Renders the official MILESET LIMITED logo graphic with user's HTML specifications
   if (!symbolOnly && !imgError) {
     return (
       <span style={{ display: 'inline-block' }} className={className}>
         <img
-          src="/mileset-logo.png"
+          src={milesetLogoAsset}
           alt="Mileset Limited"
           width="420"
           style={{ maxWidth: '100%', height: 'auto', display: 'block' }}
-          className={`${imgHeight} w-auto max-w-[200px] sm:max-w-[260px] object-contain transition-transform duration-200 hover:scale-102 ${
-            inverted ? 'brightness-0 invert opacity-95' : ''
+          className={`${imgHeight} w-auto max-w-[210px] sm:max-w-[260px] md:max-w-[300px] object-contain transition-transform duration-200 hover:scale-102 ${
+            inverted ? 'brightness-0 invert opacity-95' : 'mix-blend-multiply'
           }`}
           onError={() => setImgError(true)}
         />
@@ -51,7 +52,7 @@ export const Logo: React.FC<LogoProps> = ({
     );
   }
 
-  // Resilient vector brandmark fallback (always renders crisply if mileset-logo.png is missing)
+  // Resilient vector brandmark fallback
   return (
     <div className={`inline-flex items-center gap-2.5 ${className}`}>
       {/* Distinctive M-inspired Symbol */}
