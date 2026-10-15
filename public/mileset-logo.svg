@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 90" width="400" height="90" fill="none">
+  <!-- Background transparent -->
+  <rect width="400" height="90" fill="transparent"/>
+  
+  <!-- Icon Badge -->
+  <rect x="10" y="15" width="60" height="60" rx="14" fill="#315D4B"/>
+  <!-- Geometric M Monogram -->
+  <path d="M22 60V28L34.5 47.5L40 38.5L45.5 47.5L58 28V60H51V42L43 54.5H37L29 42V60H22Z" fill="#FFFDF7"/>
+  <!-- Champagne Horizon Accent -->
+  <circle cx="56.5" cy="59.5" r="3.5" fill="#F5EBD7"/>
+
+  <!-- Brand Typography -->
+  <text x="86" y="47" font-family="'Manrope', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="800" font-size="28" fill="#173A5E" letter-spacing="-0.02em">
+    MILESET <tspan fill="#315D4B">LIMITED</tspan>
+  </text>
+  
+  <!-- Tagline -->
+  <text x="88" y="66" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="600" font-size="10.5" fill="#64748B" letter-spacing="0.16em" text-transform="uppercase">
+    CONNECTING OPPORTUNITIES. BUILDING FUTURES.
+  </text>
+</svg>

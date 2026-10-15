@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface LogoProps {
   className?: string;
@@ -11,25 +11,52 @@ export const Logo: React.FC<LogoProps> = ({
   className = '',
   symbolOnly = false,
   inverted = false,
-  size = 'md'
+  size = 'md',
 }) => {
+  const [imgError, setImgError] = useState(false);
+
   const iconDimensions = {
     sm: 'w-7 h-7',
     md: 'w-9 h-9',
-    lg: 'w-12 h-12'
+    lg: 'w-12 h-12',
+  }[size];
+
+  const imgHeight = {
+    sm: 'h-8',
+    md: 'h-10 sm:h-11',
+    lg: 'h-14',
   }[size];
 
   const textSize = {
     sm: 'text-base',
     md: 'text-lg',
-    lg: 'text-2xl'
+    lg: 'text-2xl',
   }[size];
 
+  // If the user's mileset-logo.png is available and not symbol-only, display it
+  if (!symbolOnly && !imgError) {
+    return (
+      <div className={`inline-flex items-center ${className}`}>
+        <img
+          src="/mileset-logo.png"
+          alt="Mileset Limited - Connecting Opportunities. Building Futures."
+          width="400"
+          style={{ maxWidth: '100%', height: 'auto' }}
+          className={`${imgHeight} w-auto max-w-[200px] sm:max-w-[260px] object-contain transition-transform duration-200 hover:scale-102 ${
+            inverted ? 'brightness-0 invert opacity-95' : ''
+          }`}
+          onError={() => setImgError(true)}
+        />
+      </div>
+    );
+  }
+
+  // Resilient vector brandmark fallback (always renders crisply if mileset-logo.png is missing)
   return (
     <div className={`inline-flex items-center gap-2.5 ${className}`}>
       {/* Distinctive M-inspired Symbol */}
       <div
-        className={`${iconDimensions} shrink-0 rounded-lg flex items-center justify-center transition-transform hover:scale-105 duration-200 shadow-sm ${
+        className={`${iconDimensions} shrink-0 rounded-lg flex items-center justify-center transition-transform hover:scale-105 duration-200 shadow-xs ${
           inverted
             ? 'bg-[#FFFDF7] text-[#315D4B]'
             : 'bg-[#315D4B] text-[#FFFDF7]'
