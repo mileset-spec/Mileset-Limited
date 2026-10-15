@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-ivory: #FFFDF7;
+    --color-sage: #E6F2E9;
+    --color-sky: #E7F2FC;
+    --color-champagne: #F5EBD7;
+    --color-forest: #315D4B;
+    --color-navy: #173A5E;
+    --color-muted: #64748B;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #FFFDF7;
+    color: #173A5E;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Manrope', 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Smooth scroll & accessibility */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
