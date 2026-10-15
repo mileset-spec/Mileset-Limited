@@ -36,18 +36,18 @@ export const Logo: React.FC<LogoProps> = ({
   // If the user's mileset-logo.png is available and not symbol-only, display it
   if (!symbolOnly && !imgError) {
     return (
-      <div className={`inline-flex items-center ${className}`}>
+      <span style={{ display: 'inline-block' }} className={className}>
         <img
           src="/mileset-logo.png"
-          alt="Mileset Limited - Connecting Opportunities. Building Futures."
-          width="400"
-          style={{ maxWidth: '100%', height: 'auto' }}
+          alt="Mileset Limited"
+          width="420"
+          style={{ maxWidth: '100%', height: 'auto', display: 'block' }}
           className={`${imgHeight} w-auto max-w-[200px] sm:max-w-[260px] object-contain transition-transform duration-200 hover:scale-102 ${
             inverted ? 'brightness-0 invert opacity-95' : ''
           }`}
           onError={() => setImgError(true)}
         />
-      </div>
+      </span>
     );
   }
 
